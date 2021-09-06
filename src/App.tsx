@@ -1,8 +1,11 @@
+import AppRouter from './AppRouter';
+import Header from './components/nav/Header';
+
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <AppRouter>
+      <Header />
+    </AppRouter>
   );
 }
 

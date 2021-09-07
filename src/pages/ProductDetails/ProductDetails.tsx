@@ -1,10 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
 import useAsync from '../../hooks/useAsync';
 import ProductService from '../../services/ProductService';
-import ProductDetailsImage from '../../assets/images/product-details.png';
 import ProductSkeleton from '../../skeleton/productDetails';
+import { addToCart } from '../../redux/actionCreators/cartAction';
+import { IProduct } from '../../types';
+import imageUrlParser from '../../utils/imageUrlParser';
 
 interface IParams {
   id: string;
@@ -17,7 +20,14 @@ function ProductDetails() {
     isLoading,
     isSuccess,
   } = useAsync(() => ProductService.getProductByID(id));
-  const { name, description } = product || {};
+
+  const { name, description, image } = (product || {}) as IProduct;
+
+  const dispatch = useDispatch();
+
+  // const addToCartHandler = (product) => {
+  //   dispatch(addToCart(product));
+  // };
   return (
     <div className="product-details-page">
       <Container>
@@ -28,13 +38,16 @@ function ProductDetails() {
               <Col lg={6}>
                 <img
                   className="detailsImage"
-                  src={ProductDetailsImage}
-                  alt="Product"
+                  src={imageUrlParser(image)}
+                  alt={name}
                 />
               </Col>
               <Col lg={6}>
                 <h3>{name}</h3>
-                <button className="btn btn-primary my-3">
+                <button
+                  className="btn btn-primary my-3"
+                  onClick={() => dispatch(addToCart(product as IProduct))}
+                >
                   <AiOutlineShoppingCart />
                   <span className="ms-2">Add to Cart</span>
                 </button>

@@ -7,6 +7,7 @@ const ProductDetails = React.lazy(
   () => import('./pages/ProductDetails/ProductDetails')
 );
 const Checkout = React.lazy(() => import('./pages/Checkout/Checkout'));
+const Login = React.lazy(() => import('./pages/Login/Login'));
 
 type IProps = {
   children: ReactNode;
@@ -21,6 +22,7 @@ const AppRouter = ({ children }: IProps) => (
         <Route exact path="/about" component={About} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/login" component={Login} />
       </Suspense>
     </Switch>
   </Router>

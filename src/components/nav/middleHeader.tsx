@@ -1,15 +1,19 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { BiSearch, BiShoppingBag } from 'react-icons/bi';
+import { FaSignOutAlt } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
+import { logout } from '../../redux/actionCreators/authAction';
 import { AppState } from '../../redux/reducers/rootReducers';
 import { IProduct } from '../../types';
 
 function middleHeader() {
   const cart: IProduct[] = useSelector((state: AppState) => state.cart);
+  const { data } = useSelector((state: AppState) => state.auth);
+  const dispatch = useDispatch();
   return (
     <div className="middle-container">
       <Container>
@@ -42,8 +46,15 @@ function middleHeader() {
                 </Link>
               </li>
               <li>
-                <FiUser />
+                <Link to="/login">
+                  <FiUser />
+                </Link>
               </li>
+              {data && (
+                <Link to="/" onClick={() => dispatch(logout())}>
+                  <FaSignOutAlt />
+                </Link>
+              )}
             </ul>
           </div>
         </div>

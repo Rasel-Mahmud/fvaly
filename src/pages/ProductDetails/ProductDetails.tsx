@@ -23,7 +23,7 @@ function ProductDetails() {
 
   const { name, description, image } = (product || {}) as IProduct;
 
-  const dispatch = useDispatch();
+  const dispatchProductDetails = useDispatch();
 
   // const addToCartHandler = (product) => {
   //   dispatch(addToCart(product));
@@ -46,7 +46,9 @@ function ProductDetails() {
                 <h3>{name}</h3>
                 <button
                   className="btn btn-primary my-3"
-                  onClick={() => dispatch(addToCart(product as IProduct))}
+                  onClick={() =>
+                    dispatchProductDetails(addToCart(product as IProduct))
+                  }
                 >
                   <AiOutlineShoppingCart />
                   <span className="ms-2">Add to Cart</span>

@@ -42,7 +42,7 @@ const authReducer = (
     case actionType.LOGOUT:
       return initialState;
     default:
-      return initialState;
+      return state;
   }
 };
 

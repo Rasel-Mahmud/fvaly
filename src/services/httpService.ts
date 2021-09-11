@@ -5,6 +5,15 @@ const instance = axios.create({
   timeout: 15000,
 });
 
+instance.interceptors.request.use((config) => ({
+  ...config,
+  headers: {
+    Authorization: JSON.parse(
+      JSON.parse(localStorage.getItem('persist:fvaly') || '').auth
+    )?.data?.token,
+  },
+}));
+
 const response = (res: AxiosResponse) => res.data.data;
 
 const request = {

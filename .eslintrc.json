@@ -22,6 +22,16 @@
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "react/require-default-props": "off",
+    "no-shadow": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "arrow-body-style": "off",
+    "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-fragments": "off",
+    "import/no-useless-path-segments": "off",
+    "react/prop-types": "off"
   }
 }

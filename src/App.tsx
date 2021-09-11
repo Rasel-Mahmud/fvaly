@@ -1,12 +1,7 @@
 import AppRouter from './AppRouter';
-import Header from './components/nav/Header';
 
 function App() {
-  return (
-    <AppRouter>
-      <Header />
-    </AppRouter>
-  );
+  return <AppRouter />;
 }
 
 export default App;
